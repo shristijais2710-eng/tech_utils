@@ -11,4 +11,11 @@ def get_weather(city):
     if "error" in data:
         return "City not found!"
 
-    
+    weather = {
+        "City": data["location"]["name"],
+        "Temperature": f"{data['current']['temp_c']}°C",
+        "Feels Like": f"{data['current']['feelslike_c']}°C",
+        "Humidity": f"{data['current']['humidity']}%",
+        "Weather": data["current"]["condition"]["text"],
+        "Wind Speed": f"{data['current']['wind_kph']} kph"
+    }    
