@@ -98,18 +98,4 @@ if __name__ == "__main__":
 
 
 
-    # -------- PAST NEWS ----------
-    keyword = input("\nEnter keyword for past 30 days news: ").strip()
-
-    past = get_past_news(keyword)
-
-    print("\n🟡 Past 30 Days News Search")
-    print("---------------------------")
-
-    if not past:
-        print("⚠️ No past news found.")
-    else:
-        for idx, article in enumerate(past, start=1):
-            print(f"{idx}. {article.get('title')}")
-    
-    print("\n✔️ DONE! Latest + Past news fetched successfully.\n")
+ 
