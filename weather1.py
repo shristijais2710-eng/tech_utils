@@ -18,4 +18,8 @@ def get_weather(city):
         "Humidity": f"{data['current']['humidity']}%",
         "Weather": data["current"]["condition"]["text"],
         "Wind Speed": f"{data['current']['wind_kph']} kph"
-    }    
+    }
+    return weather
+
+city_name = input("Enter city name: ")
+result = get_weather(city_name)
