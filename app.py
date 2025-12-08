@@ -36,6 +36,7 @@ def api_news():
     category = request.args.get("category", "general").strip()
     news_list = get_latest_news(category) + get_latest_news_newsapi(category)
     
+    
     # Format the response for frontend
     articles = []
     for item in news_list:
@@ -48,6 +49,7 @@ def api_news():
         })
     
     return jsonify({"articles": articles})
+
 
 @app.route('/api/news/history')
 def api_news_history():
