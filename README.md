@@ -1,7 +1,6 @@
 # Tech Utils - Weather & News Application
 
 A modern, responsive web application that provides real-time weather information and top news headlines in one convenient place. Built with Flask backend and vanilla JavaScript frontend.
-
 ## 🌟 Features
 
 ### Weather Information
