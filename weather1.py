@@ -23,3 +23,5 @@ def get_weather(city):
 
 city_name = input("Enter city name: ")
 result = get_weather(city_name)
+
+print("\nReal-Time Weather:")
