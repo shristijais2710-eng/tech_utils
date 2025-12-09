@@ -1,4 +1,6 @@
 import requests
+import config.json
+
 
 def get_weather(city):
     api_key = "0deb9548231b4c98ba080146250412"
