@@ -77,24 +77,24 @@ def get_past_news(keyword, days=30):
 # ------------------------------------
 # MAIN APP
 # ------------------------------------
-if __name__ == "__main__":
+# if __name__ == "__main__":
  
-    print("\n🌍 SMART NEWS FETCHER")
-    print("======================\n")
+#     print("\n🌍 SMART NEWS FETCHER")
+#     print("======================\n")
  
-    # -------- LATEST NEWS ----------
-    query = input("Enter keyword for latest news (Ex: India, Tech, Cricket): ").strip()
+#     # -------- LATEST NEWS ----------
+#     query = input("Enter keyword for latest news (Ex: India, Tech, Cricket): ").strip()
  
-    latest = get_latest_news(query) + get_latest_news_newsapi(query)
+#     latest = get_latest_news(query) + get_latest_news_newsapi(query)
  
-    print("\n🔴 Latest Trending Headlines")
-    print("----------------------------")
+#     print("\n🔴 Latest Trending Headlines")
+#     print("----------------------------")
  
-    if not latest:
-        print("⚠️ No latest news found.")
-    else:
-        for i, news in enumerate(latest, start=1):
-            print(f"{i}. {news.get('title')} [{news.get('source')}]")
+#     if not latest:
+#         print("⚠️ No latest news found.")
+#     else:
+#         for i, news in enumerate(latest, start=1):
+#             print(f"{i}. {news.get('title')} [{news.get('source')}]")
  
  
  
