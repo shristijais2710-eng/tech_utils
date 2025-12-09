@@ -1,15 +1,11 @@
+// Weather
 document.getElementById("weather-btn").addEventListener("click", async () => {
-    let city = document.getElementById("city-input").value;
-    if (!city) {
-        alert("Please enter a city name");
-        return;
-    }
-    
-    let res = await fetch(`/api/weather?city=${encodeURIComponent(city)}`);
+    let res = await fetch(`/api/weather`);
     let data = await res.json();
 
     if (data.error) {
-        document.getElementById("weather-result").innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+        document.getElementById("weather-result").innerHTML =
+            `<p style="color: red;">Error: ${data.error}</p>`;
         return;
     }
 
@@ -25,14 +21,16 @@ document.getElementById("weather-btn").addEventListener("click", async () => {
     `;
 });
 
-
+// News
 document.getElementById("news-btn").addEventListener("click", async () => {
     let category = document.getElementById("news-category").value;
+
     let res = await fetch(`/api/news?category=${encodeURIComponent(category)}`);
     let data = await res.json();
 
     if (data.error) {
-        document.getElementById("news-result").innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+        document.getElementById("news-result").innerHTML =
+            `<p style="color: red;">Error: ${data.error}</p>`;
         return;
     }
 
