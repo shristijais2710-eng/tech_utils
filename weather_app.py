@@ -2,11 +2,12 @@ import requests
 
 def get_weather(city):
     api_key = "0deb9548231b4c98ba080146250412"
-    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city},india&aqi=no"
 
     response = requests.get(url)
     data = response.json()
 
+    # If city not found
     if "error" in data:
         return "City not found!"
 
@@ -18,5 +19,17 @@ def get_weather(city):
         "Weather": data["current"]["condition"]["text"],
         "Wind Speed": f"{data['current']['wind_kph']} kph"
     }
-
     return weather
+
+
+# For command line testing
+if __name__ == "__main__":
+    city_name = input("Enter city name: ")
+    result = get_weather(city_name)
+
+    print("\nReal-Time Weather:")
+    if isinstance(result, str):
+        print(result)
+    else:
+        for key, value in result.items():
+            print(f"{key}: {value}")
