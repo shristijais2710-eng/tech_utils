@@ -21,7 +21,7 @@ def get_weather(city):
     }
     return weather
 
-city_name = input("Enter city name: ")
+<!-- city_name = input("Enter city name: ")
 result = get_weather(city_name)
 
 print("\nReal-Time Weather:")
@@ -30,4 +30,4 @@ if isinstance(result, str):
 
 else:
     for key, value in result.items():
-        print(f"{key}: {value}")
+        print(f"{key}: {value}") -->
