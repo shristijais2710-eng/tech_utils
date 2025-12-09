@@ -1,13 +1,14 @@
 import requests
+import json
 
 def get_weather(city):
-    api_key = "0deb9548231b4c98ba080146250412"
-    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city}.india&aqi=no"
+    api_key = cfg["WEATHER_API_kEY"]
+    url = cfg["weather_BASE_URL"]
 
     response = requests.get(url)
     data = response.json()
 
-    # Agar city not found hai
+    # If city not found
     if "error" in data:
         return "City not found!"
 
@@ -21,13 +22,15 @@ def get_weather(city):
     }
     return weather
 
-city_name = input("Enter city name: ")
-result = get_weather(city_name)
 
-print("\nReal-Time Weather:")
-if isinstance(result, str):
-    print(result)
+# For command line testing
+if __name__ == "__main__":
+    city_name = input("Enter city name: ")
+    result = get_weather(city_name)
 
-else:
-    for key, value in result.items():
-        print(f"{key}: {value}")
+    print("\nReal-Time Weather:")
+    if isinstance(result, str):
+        print(result)
+    else:
+        for key, value in result.items():
+            print(f"{key}: {value}")
