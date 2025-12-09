@@ -3,7 +3,7 @@ import json
 
 def get_weather(city):
     api_key = cfg["WEATHER_API_kEY"]
-    url = cfg["weather_BASE_URL"]
+    url = cfg["WEATHER_BASE_URL"]
 
     response = requests.get(url)
     data = response.json()
