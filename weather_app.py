@@ -1,9 +1,22 @@
 import requests
 import json
 
+# ------------------------------------
+# LOAD CONFIG
+# ------------------------------------
+with open("config.json", "r") as f:
+    cfg = json.load(f)
+
+WEATHER_API_KEY = cfg["WEATHER_API_KEY"]
+WEATHER_BASE_URL = cfg["WEATHER_BASE_URL"]
+
+
+# ------------------------------------
+# WEATHER FUNCTION
+# ------------------------------------
 def get_weather(city):
-    api_key = cfg["WEATHER_API_kEY"]
-    url = cfg["WEATHER_BASE_URL"]
+    # Build URL from config
+    url = f"{WEATHER_BASE_URL}?key={WEATHER_API_KEY}&q={city},india&aqi=no"
 
     response = requests.get(url)
     data = response.json()
@@ -17,14 +30,17 @@ def get_weather(city):
         "Temperature": f"{data['current']['temp_c']}°C",
         "Feels Like": f"{data['current']['feelslike_c']}°C",
         "Humidity": f"{data['current']['humidity']}%",
-        "Weather": data["current"]["condition"]["text"],
+        "Weather": data['current']['condition']['text'],
         "Wind Speed": f"{data['current']['wind_kph']} kph"
     }
+
     return weather
 
 
-# For command line testing
-if __name__ == "__main__":
+# ------------------------------------
+# TESTING
+# ------------------------------------
+if _name_ == "_main_":
     city_name = input("Enter city name: ")
     result = get_weather(city_name)
 
