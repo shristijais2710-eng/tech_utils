@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, jsonify, request
 from weather_app import get_weather
 from news_fetcher import get_latest_news, get_latest_news_newsapi, get_past_news
+import json as config
 
 app = Flask(__name__)
 
