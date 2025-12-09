@@ -311,7 +311,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-Created by **Rajat** for Tech Utils Project
+Created by **Rajat jaiswal** for Tech Utils Project
 
 ## 📞 Support
 
@@ -322,7 +322,7 @@ For issues and questions:
 
 ---
 
-**Last Updated**: December 5, 2025
+**Last Updated**: December 9, 2025
 
 **Version**: 1.0.0
 
