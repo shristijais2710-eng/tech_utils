@@ -1,34 +1,58 @@
 body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
+
 .container {
     max-width: 900px;
     margin: auto;
     padding: 20px;
 }
+
 header h1 {
-    font-size: 30px;
+    font-size: 32px;
+    text-align: center;
+    color: royalblue;
 }
+
 .section {
-    background: white;
-    padding: 15px;
+    background: #fff;
+    padding: 20px;
     margin-top: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
+
 .result-box {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 15px;
+    padding: 15px;
     background: #eee;
-    border-radius: 6px;
+    border-radius: 8px;
 }
+
+.news-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
 button {
-    padding: 6px 12px;
+    padding: 8px 16px;
     border: none;
     background: royalblue;
     color: white;
     cursor: pointer;
+    border-radius: 6px;
 }
+
 button:hover {
     opacity: 0.85;
+}
+
+select {
+    padding: 6px;
+    border-radius: 6px;
+    margin-right: 10px;
 }

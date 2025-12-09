@@ -1,17 +1,18 @@
 // Weather
 document.getElementById("weather-btn").addEventListener("click", async () => {
-    let res = await fetch(`/api/weather`);
-    let data = await res.json();
+    const res = await fetch(`/api/weather`);
+    const data = await res.json();
+
+    const weatherBox = document.getElementById("weather-result");
 
     if (data.error) {
-        document.getElementById("weather-result").innerHTML =
-            `<p style="color: red;">Error: ${data.error}</p>`;
+        weatherBox.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
         return;
     }
 
-    document.getElementById("weather-result").innerHTML = `
-        <div class="weather-result">
-            <h3>Weather in ${data.city}</h3>
+    weatherBox.innerHTML = `
+        <div class="result-box">
+            <h3>Weather in ${data.city}, ${data.country}</h3>
             <p><strong>Temperature:</strong> ${data.temperature}°C</p>
             <p><strong>Feels Like:</strong> ${data.feels_like}°C</p>
             <p><strong>Condition:</strong> ${data.condition}</p>
@@ -23,33 +24,31 @@ document.getElementById("weather-btn").addEventListener("click", async () => {
 
 // News
 document.getElementById("news-btn").addEventListener("click", async () => {
-    let category = document.getElementById("news-category").value;
+    const category = document.getElementById("news-category").value;
+    const res = await fetch(`/api/news?category=${encodeURIComponent(category)}`);
+    const data = await res.json();
 
-    let res = await fetch(`/api/news?category=${encodeURIComponent(category)}`);
-    let data = await res.json();
+    const newsBox = document.getElementById("news-result");
+    newsBox.innerHTML = "";
 
     if (data.error) {
-        document.getElementById("news-result").innerHTML =
-            `<p style="color: red;">Error: ${data.error}</p>`;
+        newsBox.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
         return;
     }
 
-    let articles = data.articles || [];
-    let box = document.getElementById("news-result");
-    box.innerHTML = "";
-
+    const articles = data.articles || [];
     if (articles.length === 0) {
-        box.innerHTML = "<p>No articles found.</p>";
+        newsBox.innerHTML = "<p>No articles found.</p>";
         return;
     }
 
-    articles.forEach(a => {
-        box.innerHTML += `
+    articles.forEach(article => {
+        newsBox.innerHTML += `
             <div class="news-item">
-                <h4>${a.title}</h4>
-                <p><small>Source: ${a.source}</small></p>
-                <p>${a.description}</p>
-                <a href="${a.url}" target="_blank">Read More</a>
+                <h4>${article.title}</h4>
+                <p><small>Source: ${article.source}</small></p>
+                <p>${article.description}</p>
+                <a href="${article.url}" target="_blank">Read More</a>
             </div>
         `;
     });

@@ -20,7 +20,7 @@ def api_weather():
 
     return jsonify({
         "city": result.get("City", ""),
-        "country": "",
+        "country": "India",
         "temperature": result.get("Temperature", "").replace("°C", "").strip(),
         "feels_like": result.get("Feels Like", "").replace("°C", "").strip(),
         "condition": result.get("Weather", ""),
@@ -32,6 +32,8 @@ def api_weather():
 @app.route('/api/news')
 def api_news():
     category = request.args.get("category", "general").strip()
+    
+    # Merge news results
     news_list = get_latest_news(category) + get_latest_news_newsapi(category)
 
     articles = []
