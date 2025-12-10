@@ -37,16 +37,3 @@ def get_weather(city):
     return weather
 
 
-# ------------------------------------
-# TESTING
-# ------------------------------------
-if _name_ == "_main_":
-    city_name = input("Enter city name: ")
-    result = get_weather(city_name)
-
-    print("\nReal-Time Weather:")
-    if isinstance(result, str):
-        print(result)
-    else:
-        for key, value in result.items():
-            print(f"{key}: {value}")
