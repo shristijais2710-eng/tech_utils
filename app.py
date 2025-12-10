@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, jsonify, request
 from weather_app import get_weather
 from news_fetcher import get_latest_news, get_latest_news_newsapi, get_past_news
+import json as config
 
 app = Flask(__name__)
 
@@ -11,13 +12,15 @@ def index():
 
 @app.route('/api/weather')
 def api_weather():
-    # Default city = Delhi
-    city = request.args.get('city', 'Delhi').strip()
-
+    city = request.args.get('city', '').strip()
+    if not city:
+        return jsonify({"error": "City parameter is required"}), 400
+    
     result = get_weather(city)
     if isinstance(result, str):
         return jsonify({"error": result}), 400
-
+    
+    # Format the response for frontend
     return jsonify({
         "city": result.get("City", ""),
         "country": "",
@@ -33,7 +36,9 @@ def api_weather():
 def api_news():
     category = request.args.get("category", "general").strip()
     news_list = get_latest_news(category) + get_latest_news_newsapi(category)
-
+    
+    
+    # Format the response for frontend
     articles = []
     for item in news_list:
         articles.append({
@@ -43,8 +48,9 @@ def api_news():
             "url": item.get("link", "#"),
             "published_at": "N/A"
         })
-
+    
     return jsonify({"articles": articles})
+
 
 @app.route('/api/news/history')
 def api_news_history():
