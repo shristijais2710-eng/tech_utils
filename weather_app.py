@@ -1,50 +1,35 @@
 import requests
-import json
 
-# ------------------------------------
-# LOAD CONFIG (optional but safe)
-# ------------------------------------
-try:
-    with open("config.json", "r") as f:
-        cfg = json.load(f)
-except FileNotFoundError:
-    cfg = {}
-
-# ------------------------------------
-# API DETAILS
-# ------------------------------------
-WEATHER_API_KEY = "0deb9548231b4c98ba080146250412"
-WEATHER_BASE_URL = "http://api.weatherapi.com/v1/current.json"
-
-# ------------------------------------
-# WEATHER FUNCTION
-# ------------------------------------
 def get_weather(city):
-    try:
-        url = f"{WEATHER_BASE_URL}?key={WEATHER_API_KEY}&q={city},India&aqi=no"
-        response = requests.get(url, timeout=10)
-        data = response.json()
+    api_key = "0deb9548231b4c98ba080146250412"
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city},india&aqi=no"
 
-        if "error" in data:
-            return "❌ City not found!"
+    response = requests.get(url)
+    data = response.json()
 
-        return {
-            "City": data["location"]["name"],
-            "Temperature": f"{data['current']['temp_c']}°C",
-            "Feels Like": f"{data['current']['feelslike_c']}°C",
-            "Humidity": f"{data['current']['humidity']}%",
-            "Weather": data["current"]["condition"]["text"],
-            "Wind Speed": f"{data['current']['wind_kph']} kph"
-        }
+    # If city not found
+    if "error" in data:
+        return "City not found!"
 
-    except Exception as e:
-        return f"❌ Error: {e}"
+    weather = {
+        "City": data["location"]["name"],
+        "Temperature": f"{data['current']['temp_c']}°C",
+        "Feels Like": f"{data['current']['feelslike_c']}°C",
+        "Humidity": f"{data['current']['humidity']}%",
+        "Weather": data["current"]["condition"]["text"],
+        "Wind Speed": f"{data['current']['wind_kph']} kph"
+    }
+    return weather
 
-# ------------------------------------
-# RUN CODE ✅ (IMPORTANT)
-# ------------------------------------
-if __name__ == "__main__":
-    city = input("Enter city name: ")
-    result = get_weather(city)
-    print("\n🌦 Weather Details:")
-    print(result)
+
+# For command line testing
+# if __name__ == "__main__":
+#     city_name = input("Enter city name: ")
+#     result = get_weather(city_name)
+
+#     print("\nReal-Time Weather:")
+#     if isinstance(result, str):
+#         print(result)
+#     else:
+#         for key, value in result.items():
+#             print(f"{key}: {value}")
