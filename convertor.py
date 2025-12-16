@@ -1,5 +1,5 @@
 import requests
-
+import json
 API_URL = "https://api.exchangerate-api.com/v4/latest/USD"
 
 def get_exchange_rate():
