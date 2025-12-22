@@ -1,6 +1,7 @@
 import requests
 
-CRYPTO_API = "2540cc6703a5479baf48bc4544878bd0"
+
+CRYPTO_API = "CRYPTO_API_KEY"
 
 # ------------------------------------
 # LATEST CRYPTO NEWS (CoinMarketCap)
