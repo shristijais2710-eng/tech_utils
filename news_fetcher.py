@@ -1,15 +1,15 @@
 import requests
 from datetime import datetime, timedelta
  
-NEWS_DATA_API = "pub_2495123ea5c1484488db3c1dbd8eb5af"
-NEWS_API_KEY = "86050229de694186a0a1400ddf054f84"
+NEWS_DATA_API = "NEWSDATA_API_KEY"
+NEWS_API_KEY = "NEWS_API_KEY"
  
  
 # ------------------------------------
 # LATEST NEWS (NewsData.io)
 # ------------------------------------
 def get_latest_news(query="india"):
-    url = f"https://newsdata.io/api/1/news?apikey={NEWS_DATA_API}&q={query}&language=en"
+    url = "NEWSDATA_BASE_URL"
     res = requests.get(url).json()
  
     articles = []
@@ -28,7 +28,7 @@ def get_latest_news(query="india"):
 # LATEST NEWS (NewsAPI.org)
 # ------------------------------------
 def get_latest_news_newsapi(query="india"):
-    url = f"https://newsapi.org/v2/everything?q={query}&apiKey={NEWS_API_KEY}"
+    url = "NEWS_API_URL"
     res = requests.get(url).json()
  
     articles = []
